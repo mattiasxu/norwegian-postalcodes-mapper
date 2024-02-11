@@ -1,9 +1,4 @@
-const getPostalCodeInfo = require('./index.js');
-
-
-console.log(getPostalCodeInfo('2007')['city']); // KJELLER;
-console.log(getPostalCodeInfo('2007')['municipality']); // LILLESTRØM;
-console.log(getPostalCodeInfo('asdb')); //
+import { getPostalCodeInfo } from '../dist/index';
 
 test('Known city is correct', () => {
   expect(getPostalCodeInfo('2007')['city']).toBe('KJELLER');

@@ -11,14 +11,19 @@ data = StringIO(response.text)
 
 csv_reader = csv.reader(data, delimiter="\t")
 
-js_file = "const postalCodeMap = {\n"
+js_file = "interface PostalCodeInfo {\n"
+js_file += "  city: string;\n"
+js_file += "  municipality: string;\n"
+js_file += "}\n"
+
+js_file += "const postalCodeMap: Record<string, PostalCodeInfo> = {\n"
 for row in csv_reader:
     postnummer, poststed, kommunekode, kommune, _ = row
     js_file += f'  "{postnummer}": {{ "city": "{poststed}", "municipality": "{kommune}" }},\n'
     print(postnummer, poststed)
 js_file += "};\n"
 
-js_file += "function getPostalCodeInfo(postalCode) {\n"
+js_file += "function getPostalCodeInfo(postalCode: string): PostalCodeInfo {\n"
 js_file += "  const info = postalCodeMap[postalCode];\n"
 js_file += "  if (!info) {\n"
 js_file += '    return { "city": "UNKNOWN", "municipality": "UNKNOWN" };\n'
@@ -28,5 +33,5 @@ js_file += "}\n"
 
 js_file += "module.exports = getPostalCodeInfo;\n"
 
-with open("index.js", "w") as file:
+with open("./src/index.ts", "w") as file:
     file.write(js_file)

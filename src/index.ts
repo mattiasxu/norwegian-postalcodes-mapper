@@ -1,4 +1,8 @@
-const postalCodeMap = {
+export interface PostalCodeInfo {
+  city: string;
+  municipality: string;
+}
+const postalCodeMap: Record<string, PostalCodeInfo> = {
   "0001": { "city": "OSLO", "municipality": "OSLO" },
   "0010": { "city": "OSLO", "municipality": "OSLO" },
   "0015": { "city": "OSLO", "municipality": "OSLO" },
@@ -5146,11 +5150,10 @@ const postalCodeMap = {
   "9990": { "city": "BÅTSFJORD", "municipality": "BÅTSFJORD" },
   "9991": { "city": "BÅTSFJORD", "municipality": "BÅTSFJORD" },
 };
-function getPostalCodeInfo(postalCode) {
+export function getPostalCodeInfo(postalCode: string): PostalCodeInfo {
   const info = postalCodeMap[postalCode];
   if (!info) {
     return { "city": "UNKNOWN", "municipality": "UNKNOWN" };
   }
   return info;
 }
-module.exports = getPostalCodeInfo;

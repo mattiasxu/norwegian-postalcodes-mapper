@@ -1,9 +1,11 @@
 {
   "name": "norwegian-postalcodes-mapper",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Updated package to map Norwegian postal codes to their respecive city names",
-  "main": "index.js",
+  "main": "dist/index.ts",
+  "types": "dist/index.d.ts",
   "scripts": {
+    "build": "tsc",
     "test": "jest"
   },
   "keywords": [
@@ -11,6 +13,8 @@
     "norwegian",
     "post",
     "postalcodes",
+    "zip",
+    "norge",
     "postal",
     "code",
     "city",
@@ -19,6 +23,11 @@
   "author": "Mattias Xu",
   "license": "ISC",
   "devDependencies": {
-    "jest": "^29.7.0"
+    "@types/jest": "^29.5.12",
+    "@types/node": "^20.11.17",
+    "eslint": "^8.56.0",
+    "jest": "^29.7.0",
+    "ts-jest": "^29.1.2",
+    "typescript": "^5.3.3"
   }
 }
