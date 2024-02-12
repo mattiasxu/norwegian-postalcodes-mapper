@@ -1,4 +1,4 @@
-export interface PostalCodeInfo {
+interface PostalCodeInfo {
   city: string;
   municipality: string;
 }
@@ -5150,10 +5150,10 @@ const postalCodeMap: Record<string, PostalCodeInfo> = {
   "9990": { "city": "BÅTSFJORD", "municipality": "BÅTSFJORD" },
   "9991": { "city": "BÅTSFJORD", "municipality": "BÅTSFJORD" },
 };
-export function getPostalCodeInfo(postalCode: string): PostalCodeInfo {
+export function getPostalCodeInfo(postalCode: string): PostalCodeInfo | undefined {
   const info = postalCodeMap[postalCode];
   if (!info) {
-    return { "city": "UNKNOWN", "municipality": "UNKNOWN" };
+    return undefined;
   }
   return info;
 }

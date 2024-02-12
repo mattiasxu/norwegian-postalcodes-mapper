@@ -23,15 +23,13 @@ for row in csv_reader:
     print(postnummer, poststed)
 js_file += "};\n"
 
-js_file += "function getPostalCodeInfo(postalCode: string): PostalCodeInfo {\n"
+js_file += "export function getPostalCodeInfo(postalCode: string): PostalCodeInfo | undefined {\n"
 js_file += "  const info = postalCodeMap[postalCode];\n"
 js_file += "  if (!info) {\n"
-js_file += '    return { "city": "UNKNOWN", "municipality": "UNKNOWN" };\n'
+js_file += '    return undefined;\n'
 js_file += "  }\n"
 js_file += "  return info;\n"
 js_file += "}\n"
-
-js_file += "module.exports = getPostalCodeInfo;\n"
 
 with open("./src/index.ts", "w") as file:
     file.write(js_file)
