@@ -1,7 +1,7 @@
 {
   "name": "norwegian-postalcodes-mapper",
-  "version": "1.0.1",
-  "description": "Updated package to map Norwegian postal codes to their respecive city names",
+  "version": "1.0.2",
+  "description": "Up to date package to map Norwegian postal codes to their respecive city names and municipality",
   "main": "dist/index.ts",
   "types": "dist/index.d.ts",
   "scripts": {
